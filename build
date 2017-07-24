@@ -1,0 +1,21 @@
+#!/bin/bash
+
+out_dir="out/"
+src_dir="src/"
+
+
+# USAGE: die MESSAGE CODE
+die() {
+	printf "$1\n" >&2
+	exit $2
+}
+
+# Retrieve the javac command
+javac="$(which javac)"
+if [ -z "$javac" ]
+then
+	die "'javac' executable not found" 255
+fi
+
+$javac -verbose -Xlint:all -d $out_dir -sourcepath $src_dir $src_dir/*/*/*.java
+
