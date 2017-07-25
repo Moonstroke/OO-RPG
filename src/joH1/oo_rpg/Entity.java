@@ -12,33 +12,31 @@ public class Entity implements Cloneable, Serializable {
 	protected String name;
 
 	/**
-	 * The total amount of health points the entity can lose
-	 * before dying
+	 * Its level
+	 * Determines the global ranking of the creature among its type
 	 */
-	protected int health;
-
-	/**
-	 * The maximum (and initial) number of life points it owns
-	 */
-	protected int maxHealth;
+	protected int level;
 
 
 	/**
-	 * Ctor with no argument
+	 * Ctors
 	 */
 	protected Entity() {
 		name = "";
-		health = 0;
-		maxHealth = 0;
+		level = 0;
+	}
+
+	protected Entity(Entity e) {
+		name = new String(e.name);
+		level = e.level;
 	}
 
 	/**
-	 * Adequate ctor
+	 * Ctor to use
 	 */
-	protected Entity(String name, int health, int maxHealth) {
+	protected Entity(String name, int level) {
 		this.name = name;
-		this.health = health;
-		this.maxHealth = maxHealth;
+		this.level = level;
 	}
 
 	@Override
@@ -60,12 +58,12 @@ public class Entity implements Cloneable, Serializable {
 		if(o == null || ! (o instanceof Entity))
 			return false;
 		Entity e = (Entity)o;
-		return name.equals(e.name) && health == e.health && maxHealth == e.maxHealth;
+		return name.equals(e.name) && level = e.level;
 	}
 
 	@Override
 	public Entity clone() {
-		return new Entity(new String(name), health, maxHealth);
+		return new Entity(new String(name), level);
 	}
 
 	/**
@@ -77,35 +75,5 @@ public class Entity implements Cloneable, Serializable {
 		name = newName;
 	}
 
-	/**
-	 * The method to call when the entity's health reaches 0.
-	 */
-	public void die() {}
-
-	/**
-	 * Decreases health of {@code amount} life points.
-	 *
-	 * @param amount The amount of life points to remove to it
-	 *
-	 * @return {@code false} if the entity has died
-	 */
-	public boolean takeHit(int amount) {
-		if((health -= amount) == 0) {
-			die();
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Restores {@code amount} life points to it
-	 *
-	 * @param amount The maximum amount of life points to add to its health
-	 *
-	 * @return The new health of the entity
-	 */
-	public int restore(int amount) {
-		return health + amount > maxHealth ? (health = maxHealth) : (health += amount);
-	}
 }
 
