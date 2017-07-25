@@ -14,16 +14,19 @@ public class Item extends Entity {
 	protected boolean lootable;
 
 
-	/**
-	 * Ctors
-	 */
-	protected Item() {
+	protected Item() { // Default ctor
 		super();
 		cat = 0;
 		lootable = false;
 	}
 
-	public Item(String name, int level, int modifiedStat, boolean isLootable) {
+	protected Item(Item i) {
+		super(i);
+		cat = i.cat;
+		lootable = i.lootable;
+	}
+
+	public Item(String name, int level, int modifiedStat, boolean isLootable) { // Use this
 		super(name, level);
 		cat = category;
 		lootable = isLootable;

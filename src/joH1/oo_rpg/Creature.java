@@ -18,55 +18,30 @@ public class Creature extends Entity {
 	public static final int STAT_SPEED = 8;
 
 
-	/**
-	 * The total amount of health points the creature can lose
-	 * before dying
-	 */
 	protected int health;
 
-	/**
-	 * The maximum (and initial) number of life points it owns
-	 */
 	protected final int maxHealth;
 
-	/**
-	 * Is the creature alive or dead?
-	 */
-
 	protected boolean alive;
-	/**
-	 * Its force (in combat)
-	 * The amount of damages dealt when strikes
-	 * might be 0 for peaceful creatures
-	 */
+
 	protected int force;
 
-	/**
-	 * Its defence (in combat)
-	 * The amount of damage it can undergo in combat
-	 */
 	protected int defence;
 
-	/**
-	 * Its speed (in combat / flight)
-	 */
 	protected int speed;
 
 	/**
-	 * Its courage (ie. its ability, in combat, to not run flee from the battle)
+	 * The courage of the creature (ie. its ability, in combat, to not be frightened during battle)
 	 * 0 <= courage <= 100
 	 * A courage of 0 means the creature will always try to flee and never attacks
 	 * (like peaceful creatures)
 	 * A courage of 100 means the creature will never flee a battle -- used with players,
-	 * who will decide by themselves to fight or flee
+	 * who will decide by themselves to fight or flee, or bosses
 	 */
 	protected int courage;
 
 
-	/**
-	 * Default ctor
-	 */
-	protected Creature() {
+	protected Creature() { // Default ctor
 		super();
 		health = maxHealth = 0;
 		alive = false;
@@ -75,10 +50,7 @@ public class Creature extends Entity {
 		speed = 0;
 	}
 
-	/**
-	 * Copy ctor
-	 */
-	protected Creature(Creature c) {
+	protected Creature(Creature c) { // Copy ctor
 		super(c);
 		health = c.health;
 		maxHealth = c.maxHealth;
@@ -88,10 +60,8 @@ public class Creature extends Entity {
 		speed = c.speed;
 	}
 
-	/**
-	 * Ctor to be used
-	 */
 	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) {
+		// This one is the ctor that should be used
 		super(name, level);
 		health = maxHealth = initialHealth;
 		alive = true;
@@ -134,9 +104,6 @@ public class Creature extends Entity {
 		return ++level;
 	}
 
-	/**
-	 * The method to call when the creature's health reaches 0.
-	 */
 	public void die() {
 		alive = false;
 	}
@@ -148,7 +115,7 @@ public class Creature extends Entity {
 	 *
 	 * @return {@code alive}
 	 */
-	public boolean takeHit(int amount) {
+	public boolean hurt(int amount) {
 		if((health -= amount) == 0) {
 			die();
 			return false;

@@ -6,35 +6,25 @@ import java.io.Serializable;
 public class Entity implements Cloneable, Serializable {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The name of the entity
-	 */
 	protected String name;
 
 	/**
-	 * Its level
-	 * Determines the global ranking of the creature among its type
+	 * Determines the global ranking of the entity among its type
 	 */
 	protected int level;
 
 
-	/**
-	 * Ctors
-	 */
-	protected Entity() {
+	protected Entity() { // Default ctor
 		name = "";
 		level = 0;
 	}
 
-	protected Entity(Entity e) {
+	protected Entity(Entity e) { // Copy ctor
 		name = new String(e.name);
 		level = e.level;
 	}
 
-	/**
-	 * Ctor to use
-	 */
-	protected Entity(String name, int level) {
+	protected Entity(String name, int level) { // Use this
 		this.name = name;
 		this.level = level;
 	}
@@ -46,11 +36,6 @@ public class Entity implements Cloneable, Serializable {
 		sb.append("Entity \"").append(name).append("\" [").append(String.valueOf(health));
 		sb.append('/').append(String.valueOf(maxHealth)).append(']');
 		return sb.toString();
-	}
-
-	@Override
-	public int hashCode() {
-		return 42;
 	}
 
 	@Override
