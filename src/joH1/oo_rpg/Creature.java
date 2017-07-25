@@ -4,6 +4,20 @@ package joH1.oo_rpg;
 public class Creature extends Entity {
 	private static final long serialVersionUID = 2L;
 
+
+	/**
+	 * Every stat.
+	 * Categories can be {@code OR}ed together (but this has no use yet)
+	 */
+	public static final int STAT_HEALTH = 1;
+	
+	public static final int STAT_FORCE = 2;
+
+	public static final int STAT_DEFENCE = 4;
+
+	public static final int STAT_SPEED = 8;
+
+
 	/**
 	 * The total amount of health points the creature can lose
 	 * before dying
@@ -75,7 +89,7 @@ public class Creature extends Entity {
 	}
 
 	/**
-	 * Ctor to use
+	 * Ctor to be used
 	 */
 	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) {
 		super(name, level);
@@ -168,7 +182,6 @@ public class Creature extends Entity {
 	 * @param c The creature it runs from
 	 */
 	public void flee(Creature c) {}
-
 	
 }
 
