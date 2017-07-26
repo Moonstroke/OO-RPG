@@ -168,7 +168,12 @@ public class Creature extends Entity {
 
 		Creature z2 = z.clone();
 		System.out.println("z2 = " + z2);
-		System.out.println("z2 == z ? " + z2.equals(z));
+		boolean equals = z2.equals(z);
+		System.out.println("z2 == z ? " + equals);
+		if(!equals) {
+			System.out.println("That's odd...");
+			return;
+		}
 		System.out.println("\n----------------\n");
 		k.hurt(5);
 		System.out.println("k hurt by 5 = " + k);
