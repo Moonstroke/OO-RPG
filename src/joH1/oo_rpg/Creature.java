@@ -186,47 +186,5 @@ public abstract class Creature extends Entity {
 	 */
 	public abstract void flee(Creature c);
 
-
-	/**
-	 * Added for tests.
-	 *
-	 * @param args CLI arguments
-	 */
-	public static void main(String[] args) {
-		Creature z = new Creature("Zombie", 5, 25, 10, 8, 5, 80);
-		System.out.println("z = " + z);
-
-		Creature k = new Creature("Knight", 5, 25, 12, 10, 4, 100);
-		System.out.println("k = " + k);
-
-		System.out.println("\n----------------\n");
-
-		Creature z2 = z.clone();
-		System.out.println("z2 = " + z2);
-		boolean equals = z2.equals(z);
-		System.out.println("z2 == z ? " + equals);
-		if(!equals) {
-			System.out.println("Odd: z and z2 should compare equals");
-			return;
-		}
-		else {
-			System.out.println("OK");
-		}
-		System.out.println("\n----------------\n");
-		k.hurt(5);
-		System.out.println("k hurt by 5 = " + k);
-
-		System.out.println("\n----------------\n");
-		z.hurt(30);
-		System.out.println("z - 30 HP = " + z);
-		if(z.isAlive()) {
-			System.out.println("Odd: z should be dead now");
-		}
-		else {
-			System.out.println("OK");
-		}
-
-	}
-
 }
 
