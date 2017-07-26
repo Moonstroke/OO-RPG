@@ -1,8 +1,9 @@
 #!/bin/bash
 
+d="${0%/*}"
+
 out_dir="out/"
 src_dir="src/"
-
 
 # USAGE: die MESSAGE CODE
 die() {
@@ -10,10 +11,10 @@ die() {
 	exit $2
 }
 
-if [ ! -d "$out_dir" ]
+if [ ! -d "$d/$out_dir" ]
 then
 	echo "Create ouput dir \"$out_dir\"" >&2
-	mkdir "$out_dir"
+	mkdir "$d/$out_dir"
 fi
 
 # Retrieve the javac command
@@ -23,5 +24,5 @@ then
 	die "'javac' executable not found" 255
 fi
 
-$javac -Xlint:all -d $out_dir -sourcepath $src_dir $src_dir/*/*/*.java
+$javac -Xlint:all -d $d/$out_dir -sourcepath $d/$src_dir $d/$src_dir/*/*/*.java
 
