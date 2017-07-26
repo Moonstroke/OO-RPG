@@ -9,13 +9,15 @@ public class Creature extends Entity {
 	 * Every stat.
 	 * Stats can be {@code OR}ed together (but this has no use yet)
 	 */
-	public static final int STAT_HEALTH = 1;
+	public static final int STAT_HEALTH = 0x1;
 	
-	public static final int STAT_FORCE = 2;
+	public static final int STAT_FORCE = 0x2;
 
-	public static final int STAT_DEFENCE = 4;
+	public static final int STAT_DEFENCE = 0x4;
 
-	public static final int STAT_SPEED = 8;
+	public static final int STAT_SPEED = 0x8;
+
+	public static final int STAT_COURAGE = 0x10;
 
 
 	protected int health;
@@ -41,16 +43,17 @@ public class Creature extends Entity {
 	protected int courage;
 
 
-	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) { // Use this
+	public Creature(String name, int level, int initialHealth, int force, int defence, int speed, int courage) { // Use this
 		super(name, level);
 		health = maxHealth = initialHealth;
 		alive = true;
 		this.force = force;
 		this.defence = defence;
 		this.speed = speed;
+		this.courage = courage;
 	}
 
-	protected Creature(String name, int level, int health, int maxHealth, boolean alive, int force, int defence, int speed) {
+	protected Creature(String name, int level, int health, int maxHealth, boolean alive, int force, int defence, int speed, int courage) {
 		super(name, level);
 		this.health = health;
 		this.maxHealth = maxHealth;
@@ -59,6 +62,7 @@ public class Creature extends Entity {
 		this.force = force;
 		this.defence = defence;
 		this.speed = speed;
+		this.courage = courage;
 	}
 
 	@Override
@@ -71,12 +75,12 @@ public class Creature extends Entity {
 
 	@Override
 	public String toString() {
-		return String.format(java.util.Locale.US, "Creature \"%s\" level %d, %d / %d - %d", name, level, force, defence, speed);
+		return String.format("%s [%d/%d], %d / %d -- %d | %d%%", super.toString(), health, maxHealth, force, defence, speed, courage);
 	}
 
 	@Override
 	public Creature clone() {
-		return new Creature(new String(name), level, health, maxHealth, alive, force, defence, speed);
+		return new Creature(new String(name), level, health, maxHealth, alive, force, defence, speed, courage);
 	}
 
 
@@ -124,6 +128,8 @@ public class Creature extends Entity {
 				return defence += amount;
 			case STAT_SPEED:
 				return speed += amount;
+			case STAT_COURAGE:
+				return courage = (courage + amount) > 100 ? 100 : courage + amount;
 			default:
 				throw new IllegalArgumentException(stat + " is not a valid stat value");
 		}
@@ -144,6 +150,7 @@ public class Creature extends Entity {
 	 * @param c The creature it runs from
 	 */
 	public void flee(Creature c) {}
-	
+
+
 }
 
