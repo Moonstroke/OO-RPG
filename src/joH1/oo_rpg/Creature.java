@@ -171,12 +171,26 @@ public class Creature extends Entity {
 		boolean equals = z2.equals(z);
 		System.out.println("z2 == z ? " + equals);
 		if(!equals) {
-			System.out.println("That's odd...");
+			System.out.println("Odd: z and z2 should compare equals");
 			return;
+		}
+		else {
+			System.out.println("OK");
 		}
 		System.out.println("\n----------------\n");
 		k.hurt(5);
 		System.out.println("k hurt by 5 = " + k);
+
+		System.out.println("\n----------------\n");
+		z.hurt(30);
+		System.out.println("z - 30 HP = " + z);
+		if(z.isAlive()) {
+			System.out.println("Odd: z should be dead now");
+		}
+		else {
+			System.out.println("OK");
+		}
+
 	}
 
 }
