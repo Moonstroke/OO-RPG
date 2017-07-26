@@ -5,9 +5,6 @@ import java.util.Random;
 public class Mob extends Creature implements Duellist {
 	private static final long serialVersionUID = 3L;
 
-
-	public static final int STAT_COURAGE = 0x10;
-
 	/**
 	 * The courage of the creature (ie. its ability, in combat, to not be frightened during battle)
 	 * 0 <= courage <= 100
@@ -40,12 +37,12 @@ public class Mob extends Creature implements Duellist {
 	}
 
 	@Override
-	public int buffStat(int stat, int amount) {
+	public int buffStat(Stat stat, int amount) {
 		int res = super.buffStat(stat, amount);
 		if(res != 0)
 			return res;
 		switch(stat) {
-			case STAT_COURAGE:
+			case COURAGE:
 				return courage = (courage + amount) > 100 ? 100 : courage + amount;
 			default:
 				return 0;

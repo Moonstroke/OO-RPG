@@ -7,7 +7,7 @@ public class Item extends Entity {
 	/**
 	 * The stat the item affects (force, resistance, health, speed)
 	 */
-	protected int stat;
+	protected Stat stat;
 
 	/**
 	 * Can the item be dropped by a creature?
@@ -15,7 +15,7 @@ public class Item extends Entity {
 	protected boolean lootable;
 
 
-	public Item(String name, int level, int modifiedStat, boolean isLootable) {
+	public Item(String name, int level, Stat modifiedStat, boolean isLootable) {
 		super(name, level);
 		stat = modifiedStat;
 		lootable = isLootable;
@@ -43,7 +43,7 @@ public class Item extends Entity {
 		return lootable;
 	}
 
-	public int modifiedStat() {
+	public Stat modifiedStat() {
 		return stat;
 	}
 
@@ -54,10 +54,10 @@ public class Item extends Entity {
 	 * @param args CLI arguments
 	 */
 	public static void main(String[] args) {
-		Item s = new Item("Sword", 4, Creature.STAT_FORCE, true);
+		Item s = new Item("Sword", 4, Stat.FORCE, true);
 		System.out.println("s = " + s);
 
-		Item h = new Item("Shield", 5, Creature.STAT_DEFENCE, true);
+		Item h = new Item("Shield", 5, Stat.DEFENCE, true);
 		System.out.println("h = " + h);
 
 		System.out.println("\n----------------\n");

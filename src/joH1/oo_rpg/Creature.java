@@ -4,20 +4,6 @@ package joH1.oo_rpg;
 public abstract class Creature extends Entity {
 	private static final long serialVersionUID = 2L;
 
-
-	/**
-	 * Every stat.
-	 * Stats can be {@code OR}ed together (but this has no use yet)
-	 */
-	public static final int STAT_HEALTH = 0x1;
-	
-	public static final int STAT_FORCE = 0x2;
-
-	public static final int STAT_DEFENCE = 0x4;
-
-	public static final int STAT_SPEED = 0x8;
-
-
 	protected int health;
 
 	protected final int maxHealth;
@@ -98,15 +84,15 @@ public abstract class Creature extends Entity {
 	 *
 	 * @return The new value of the statistic or {@code 0} if the stat could not be found
 	 */
-	public int buffStat(int stat, int amount) {
+	public int buffStat(Stat stat, int amount) {
 		switch(stat) {
-			case STAT_HEALTH:
+			case HEALTH:
 				return health += amount;
-			case STAT_FORCE:
+			case FORCE:
 				return force += amount;
-			case STAT_DEFENCE:
+			case DEFENCE:
 				return defence += amount;
-			case STAT_SPEED:
+			case SPEED:
 				return speed += amount;
 			default:
 				return 0;
