@@ -33,12 +33,44 @@ public class Item extends Entity {
 		return stat == i.stat && lootable == i.lootable;
 	}
 
+	@Override
+	public Item clone() {
+		return new Item(new String(name), level, stat, lootable);
+	}
+
 	public boolean isLootable() {
 		return lootable;
 	}
 
 	public int modifiedStat() {
 		return stat;
+	}
+
+
+	/**
+	 * Added for tests.
+	 *
+	 * @param args CLI arguments
+	 */
+	public static void main(String[] args) {
+		Item s = new Item("Sword", 4, Creature.STAT_FORCE, true);
+		System.out.println("s = " + s);
+
+		Item h = new Item("Shield", 5, Creature.STAT_DEFENCE, true);
+		System.out.println("h = " + h);
+
+		System.out.println("\n----------------\n");
+
+		Item s2 = s.clone();
+		System.out.println("s2 = " + s2);
+		boolean equals = s2.equals(s);
+		System.out.println("s2 == s ? " + equals);
+		if(! equals) {
+			System.out.println("Odd: s and s2 should compare equals");
+		}
+		else {
+			System.out.println("OK");
+		}
 	}
 
 }
