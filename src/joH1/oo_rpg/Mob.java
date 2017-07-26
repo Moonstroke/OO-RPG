@@ -1,6 +1,7 @@
 package joH1.oo_rpg;
 
 
+@Challengeable
 public class Mob extends Creature {
 	private static final long serialVersionUID = 3L;
 
@@ -9,7 +10,7 @@ public class Mob extends Creature {
 	}
 
 	@Override
-	public void fight(Creature c) {
+	public void strike(Creature c) {
 	
 	}
 	
