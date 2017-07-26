@@ -152,5 +152,27 @@ public class Creature extends Entity {
 	public void flee(Creature c) {}
 
 
+	/**
+	 * Added for tests.
+	 *
+	 * @param args CLI arguments
+	 */
+	public static void main(String[] args) {
+		Creature z = new Creature("Zombie", 5, 25, 10, 8, 5, 80);
+		System.out.println("z = " + z);
+
+		Creature k = new Creature("Knight", 5, 25, 12, 10, 4, 100);
+		System.out.println("k = " + k);
+
+		System.out.println("\n----------------\n");
+
+		Creature z2 = z.clone();
+		System.out.println("z2 = " + z2);
+		System.out.println("z2 == z ? " + z2.equals(z));
+		System.out.println("\n----------------\n");
+		k.hurt(5);
+		System.out.println("k hurt by 5 = " + k);
+	}
+
 }
 
