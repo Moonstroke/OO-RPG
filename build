@@ -23,5 +23,5 @@ then
 	die "'javac' executable not found" 255
 fi
 
-$javac -verbose -Xlint:all -d $out_dir -sourcepath $src_dir $src_dir/*/*/*.java
+$javac -Xlint:all -d $out_dir -sourcepath $src_dir $src_dir/*/*/*.java
 
