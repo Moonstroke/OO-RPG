@@ -27,7 +27,7 @@ public class Item extends Entity {
 
 	@Override
 	public boolean equals(Object o) {
-		if(!(super.equals(o) && o instanceof Item.class))
+		if(!(super.equals(o) && o instanceof Item))
 			return false;
 		Item i = (Item)o;
 		return stat == i.stat && lootable == i.lootable;
@@ -37,8 +37,8 @@ public class Item extends Entity {
 		return lootable;
 	}
 
-	public int category() {
-		return cat;
+	public int modifiedStat() {
+		return stat;
 	}
 
 }
