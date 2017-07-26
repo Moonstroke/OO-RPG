@@ -73,16 +73,6 @@ public class Creature extends Entity {
 		return alive;
 	}
 
-	/**
-	 * Increases the level of the creature.
-	 * Should be overriden to increase others stats
-	 *
-	 * @return the new level of the creature
-	 */
-	public int levelUp() {
-		return ++level;
-	}
-
 	public void die() {
 		alive = false;
 	}
