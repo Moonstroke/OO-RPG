@@ -119,6 +119,14 @@ public class Creature extends Entity {
 		return health + amount > maxHealth ? (health = maxHealth) : (health += amount);
 	}
 
+	/**
+	 * Increases the value of one of the creature's statistics
+	 *
+	 * @param stat   The statistic to increase
+	 * @param amount The value by which to increqse the stat
+	 *
+	 * @return The new value of the statistic
+	 */
 	public int buffStat(int stat, int amount) throws IllegalArgumentException {
 		switch(stat) {
 			case STAT_HEALTH:
@@ -137,12 +145,40 @@ public class Creature extends Entity {
 	}
 
 	/**
+	 * Draw a single hit on a creature.
+	 *
+	 * @param c the striked creature
+	 */
+	public void strike(Creature c) {
+		// TODO
+	}
+
+	/**
+	 * Can the creature be challenged in duel?
+	 *
+	 * @return {@code true} iff the {@code Challengeable} annotation is present
+	 *         on the creature's end class
+	 */
+	public boolean isChallengeable() {
+		return this.getClass().isAnnotationPresent(Challengeable.class);
+	}
+
+	/**
 	 * Start a combat with another creature.
 	 * Should be overriden for aggressive creatures
 	 *
 	 * @param c The attacked creature
-	 */
-	public void fight(Creature c) {}
+	 *
+	 * @return a {@link Duel} between the creature and the attacked creature
+	 *         if the latter {@link Challengeable can be challenged},
+	 *         {@code null} otherwise
+ 	 */
+	public Duel fight(Creature c) {
+		if(c.isChallengeable())
+			return new Duel(this, c);
+		strike(c);
+		return null;
+	}
 
 	/**
 	 * Run in fear from a creature
@@ -150,7 +186,9 @@ public class Creature extends Entity {
 	 *
 	 * @param c The creature it runs from
 	 */
-	public void flee(Creature c) {}
+	public void flee(Creature c) {
+		// TODO
+	}
 
 
 	/**
