@@ -1,7 +1,7 @@
 package joH1.oo_rpg;
 
 
-public class Creature extends Entity {
+public abstract class Creature extends Entity {
 	private static final long serialVersionUID = 2L;
 
 
@@ -149,9 +149,7 @@ public class Creature extends Entity {
 	 *
 	 * @param c the striked creature
 	 */
-	public void strike(Creature c) {
-		// TODO
-	}
+	public abstract void strike(Creature c);
 
 	/**
 	 * Can the creature be challenged in duel?
@@ -186,9 +184,7 @@ public class Creature extends Entity {
 	 *
 	 * @param c The creature it runs from
 	 */
-	public void flee(Creature c) {
-		// TODO
-	}
+	public abstract void flee(Creature c);
 
 
 	/**
