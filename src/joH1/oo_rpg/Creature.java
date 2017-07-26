@@ -7,7 +7,7 @@ public class Creature extends Entity {
 
 	/**
 	 * Every stat.
-	 * Categories can be {@code OR}ed together (but this has no use yet)
+	 * Stats can be {@code OR}ed together (but this has no use yet)
 	 */
 	public static final int STAT_HEALTH = 1;
 	
