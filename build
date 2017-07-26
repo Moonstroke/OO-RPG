@@ -10,6 +10,12 @@ die() {
 	exit $2
 }
 
+if [ ! -d "$out_dir" ]
+then
+	echo "Create ouput dir \"$out_dir\"" >&2
+	mkdir "$out_dir"
+fi
+
 # Retrieve the javac command
 javac="$(which javac)"
 if [ -z "$javac" ]
