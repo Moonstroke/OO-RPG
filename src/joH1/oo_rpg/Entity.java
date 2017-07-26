@@ -14,24 +14,25 @@ public abstract class Entity implements Cloneable, Serializable {
 	protected int level;
 
 
+	protected Entity(String name, int level) {
+		this.name = name;
+		this.level = level;
+	}
+
 	@Override
 	public abstract String toString();
 
 	@Override
-	public boolean equals(Object o) {
-		if(o == null || ! (o instanceof Entity.class))
-			return false;
-		Entity e = (Entity)o;
-		return name.equals(e.name) && level = e.level;
+	public int hashCode() {
+		return 31 * name.hashCode() + level;
 	}
 
-	/**
-	 * Changes the entity's name to {@code newName}.
-	 *
-	 * @param newName The new name to give to the entity
-	 */
-	public void rename(String newName) {
-		name = newName;
+	@Override
+	public boolean equals(Object o) {
+		if(o == null || ! (o instanceof Entity))
+			return false;
+		Entity e = (Entity)o;
+		return name.equals(e.name) && level == e.level;
 	}
 
 	/**
