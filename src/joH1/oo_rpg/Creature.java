@@ -94,6 +94,7 @@ public class Creature extends Entity {
 
 	/**
 	 * Decreases health of {@code amount} life points.
+	 * Health can drop below 0, but it's actually no big deal
 	 *
 	 * @param amount The amount of life points to remove to it
 	 *
