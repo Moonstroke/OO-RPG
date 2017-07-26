@@ -6,7 +6,7 @@ import java.io.Serializable;
 public abstract class Entity implements Cloneable, Serializable {
 	private static final long serialVersionUID = 1L;
 
-	protected String name;
+	protected final String name;
 
 	/**
 	 * Determines the global ranking of the entity among its type
