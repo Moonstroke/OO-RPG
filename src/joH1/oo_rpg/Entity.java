@@ -19,7 +19,7 @@ public abstract class Entity implements Cloneable, Serializable {
 
 	@Override
 	public boolean equals(Object o) {
-		if(o == null || ! (o instanceof Entity))
+		if(o == null || ! (o instanceof Entity.class))
 			return false;
 		Entity e = (Entity)o;
 		return name.equals(e.name) && level = e.level;
