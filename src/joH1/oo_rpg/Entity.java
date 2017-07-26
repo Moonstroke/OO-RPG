@@ -20,7 +20,9 @@ public abstract class Entity implements Cloneable, Serializable {
 	}
 
 	@Override
-	public abstract String toString();
+	public String toString() {
+		return String.format("%s \"%s\" level %d", this.getClass().getName(), name, level);
+	}
 
 	@Override
 	public int hashCode() {
