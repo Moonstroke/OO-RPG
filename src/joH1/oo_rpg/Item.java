@@ -1,5 +1,6 @@
 package joH1.oo_rpg;
 
+
 public class Item extends Entity {
 	private static final long serialVersionUID = 3L;
 

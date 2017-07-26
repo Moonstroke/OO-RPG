@@ -3,6 +3,7 @@ package joH1.oo_rpg;
 import java.lang.StringBuilder;
 import java.io.Serializable;
 
+
 public abstract class Entity implements Cloneable, Serializable {
 	private static final long serialVersionUID = 1L;
 
