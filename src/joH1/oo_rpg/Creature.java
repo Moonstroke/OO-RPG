@@ -41,7 +41,8 @@ public class Creature extends Entity {
 	protected int courage;
 
 
-	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) {
+	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) { // Use this
+		super(name, level);
 		health = maxHealth = initialHealth;
 		alive = true;
 		this.force = force;
@@ -49,10 +50,20 @@ public class Creature extends Entity {
 		this.speed = speed;
 	}
 
+	protected Creature(String name, int level, int health, int maxHealth, boolean alive, int force, int defence, int speed) {
+		super(name, level);
+		this.health = health;
+		this.maxHealth = maxHealth;
+		this.alive = alive;
+		this.alive = alive;
+		this.force = force;
+		this.defence = defence;
+		this.speed = speed;
+	}
 
 	@Override
 	public boolean equals(Object o) {
-		if(!(super.equals(o) && o instanceof Creature.class))
+		if(!(super.equals(o) && o instanceof Creature))
 			return false;
 		Creature c = (Creature)o;
 		return health == c.health && maxHealth == c.maxHealth && c.force == force && c.defence == defence && c.speed == speed;
@@ -65,7 +76,7 @@ public class Creature extends Entity {
 
 	@Override
 	public Creature clone() {
-		return new Creature(new String(name), level, health, maxHealth, force, defence, speed);
+		return new Creature(new String(name), level, health, maxHealth, alive, force, defence, speed);
 	}
 
 
@@ -101,6 +112,21 @@ public class Creature extends Entity {
 	 */
 	public int restore(int amount) {
 		return health + amount > maxHealth ? (health = maxHealth) : (health += amount);
+	}
+
+	public int buffStat(int stat, int amount) throws IllegalArgumentException {
+		switch(stat) {
+			case STAT_HEALTH:
+				return health += amount;
+			case STAT_FORCE:
+				return force += amount;
+			case STAT_DEFENCE:
+				return defence += amount;
+			case STAT_SPEED:
+				return speed += amount;
+			default:
+				throw new IllegalArgumentException(stat + " is not a valid stat value");
+		}
 	}
 
 	/**
