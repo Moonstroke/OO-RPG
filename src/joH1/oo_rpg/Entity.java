@@ -21,7 +21,7 @@ public abstract class Entity implements Cloneable, Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("%s \"%s\" level %d", this.getClass().getName(), name, level);
+		return String.format("%s \"%s\" level %d", this.getClass().getSimpleName(), name, level);
 	}
 
 	@Override
