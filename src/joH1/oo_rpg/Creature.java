@@ -100,7 +100,7 @@ public class Creature extends Entity {
 	 * @return {@code alive}
 	 */
 	public boolean hurt(int amount) {
-		if((health -= amount) == 0) {
+		if((health -= amount) <= 0) {
 			die();
 			return false;
 		}
