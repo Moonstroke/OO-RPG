@@ -35,34 +35,13 @@ public class Creature extends Entity {
 	 * 0 <= courage <= 100
 	 * A courage of 0 means the creature will always try to flee and never attacks
 	 * (like peaceful creatures)
-	 * A courage of 100 means the creature will never flee a battle -- used with players,
-	 * who will decide by themselves to fight or flee, or bosses
+	 * A courage of 100 means the creature will never flee a battle -- used with players
+	 * (who will decide by themselves to fight or flee) or bosses
 	 */
 	protected int courage;
 
 
-	protected Creature() { // Default ctor
-		super();
-		health = maxHealth = 0;
-		alive = false;
-		force = 0;
-		defence = 0;
-		speed = 0;
-	}
-
-	protected Creature(Creature c) { // Copy ctor
-		super(c);
-		health = c.health;
-		maxHealth = c.maxHealth;
-		alive = c.alive;
-		force = c.force;
-		defence = c.defence;
-		speed = c.speed;
-	}
-
 	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) {
-		// This one is the ctor that should be used
-		super(name, level);
 		health = maxHealth = initialHealth;
 		alive = true;
 		this.force = force;
@@ -73,10 +52,10 @@ public class Creature extends Entity {
 
 	@Override
 	public boolean equals(Object o) {
-		if(!(super.equals(o) && o instanceof Creature))
+		if(!(super.equals(o) && o instanceof Creature.class))
 			return false;
 		Creature c = (Creature)o;
-		return health == e.health && maxHealth == e.maxHealth && c.force == force && c.defence == defence && c.speed == speed;
+		return health == c.health && maxHealth == c.maxHealth && c.force == force && c.defence == defence && c.speed == speed;
 	}
 
 	@Override
