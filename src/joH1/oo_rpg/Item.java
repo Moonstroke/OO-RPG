@@ -14,24 +14,24 @@ public class Item extends Entity {
 	protected boolean lootable;
 
 
-	protected Item() { // Default ctor
-		super();
-		cat = 0;
-		lootable = false;
-	}
-
-	protected Item(Item i) {
-		super(i);
-		cat = i.cat;
-		lootable = i.lootable;
-	}
-
-	public Item(String name, int level, int modifiedStat, boolean isLootable) { // Use this
+	public Item(String name, int level, int modifiedStat, boolean isLootable) {
 		super(name, level);
-		cat = category;
+		stat = modifiedStat;
 		lootable = isLootable;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Item \"%s\" : %d, loot? %b", name, stat, lootable);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if(!(super.equals(o) && o instanceof Item.class))
+			return false;
+		Item i = (Item)o;
+		return stat == i.stat && lootable == i.lootable;
+	}
 
 	public boolean isLootable() {
 		return lootable;
@@ -40,5 +40,6 @@ public class Item extends Entity {
 	public int category() {
 		return cat;
 	}
+
 }
 
