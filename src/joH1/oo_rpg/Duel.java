@@ -28,35 +28,42 @@ public class Duel {
 	/**
 	 * Gets the opponent of the creature (the other Duellist)
 	 *
+	 * Using {@code SuppressWarnings("unchecked")} is bad practice, but
+	 * {@code left} and {@code right} will always be subclasses of both
+	 * {@link Creature} and {@link Duellist}, so the warning here is just useless
+	 *
 	 * @param c The creature to retrieve the opponent
 	 *
 	 * @return The Creature involved in duel and which is not {@code c}
 	 *         or {@code null} if c does not belong to the duel
 	 */
-	public Duellist getOpponent(Duellist d) {
+	@SuppressWarnings("unchecked")
+	public <C extends Creature & Duellist> C getOpponent(C d) {
 		if(left.equals(d))
-			return right;
+			return (C)right;
 		else if(right.equals(d))
-			return left;
+			return (C)left;
 		return null;
 	}
+
 	/**
 	 * One round of the duel.
 	 * TODO take creatures' speed into account
 	 *
 	 * @return The winner of the duel, if one; otherwise {@code null}
 	 */
-	public Duellist round() {
+	public <C extends Creature & Duellist> C round() {
 		left.duelTurn(this);
 		right.duelTurn(this);
 		return winner();
 	}
 
-	public Duellist winner() {
+	@SuppressWarnings("unchecked")
+	public <C extends Creature & Duellist> C winner() {
 		if(left.hasDied())
-			return right;
+			return (C)right;
 		else if(right.hasDied())
-			return left;
+			return (C)left;
 		return null;
 	}
 

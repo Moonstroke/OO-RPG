@@ -84,12 +84,12 @@ public class Mob extends Creature implements Duellist {
 	 */
 	@Override
 	public void flee(Duel d) {
-		runFrom((Creature)d.getOpponent(this));
+		runFrom(d.getOpponent(this));
 	}
 
 	@Override
 	public void duelTurn(Duel d) {
-		Creature opponent = (Creature)d.getOpponent(this);
+		Creature opponent = d.getOpponent(this);
 		if(new Random().nextInt(100) >= courage) // roll the dice
 			flee(d);
 		else
