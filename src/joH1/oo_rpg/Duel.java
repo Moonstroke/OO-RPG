@@ -3,9 +3,7 @@ package joH1.oo_rpg;
 
 public class Duel {
 
-	private Duellist left;
-
-	private Duellist right;
+	private Duellist left, right;
 
 
 	public Duel(Duellist left, Duellist right) {
