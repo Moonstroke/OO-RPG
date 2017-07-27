@@ -116,14 +116,13 @@ public abstract class Creature extends Entity {
 	/**
 	 * Can the creature be challenged in duel?
 	 *
-	 * @return {@code true} iff the {@code Challengeable} annotation is present
-	 *         on the creature's end class
+	 * NullPointerException safe.
+	 *
+	 * @return {@code true} iff the creature's final class 
+	 *         implements the {@link Duellist} interface
 	 */
 	public boolean isChallengeable() {
-		for(Class<?> i : this.getClass().getInterfaces())
-			if(i.equals(Duellist.class))
-				return true;
-		return false;
+		return this instanceof Duellist;
 	}
 
 }
