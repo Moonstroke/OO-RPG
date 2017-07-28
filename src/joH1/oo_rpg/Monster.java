@@ -60,7 +60,6 @@ public class Monster extends Creature implements Aggressive {
 		// TODO
 	}
 
-
 	@Override
 	public void strike(Creature c) {
 		// TODO
@@ -68,7 +67,7 @@ public class Monster extends Creature implements Aggressive {
 
 	@Override
 	public void retaliate(Creature c) {
-		if(new Random().nextInt(100) < courage) // roll the dice
+		if(Die.roll() < courage)
 			strike(c);
 		else
 			runFrom(c);
@@ -76,8 +75,9 @@ public class Monster extends Creature implements Aggressive {
 
 	@Override
 	public void attackSpontaneously(Creature c) {
-		if(new Random().nextInt(100) < aggressivity) // roll the dice
+		if(Die.roll() < aggressivity)
 			strike(c);
 	}
+
 }
 
