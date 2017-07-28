@@ -8,11 +8,11 @@ public class Die {
 	private static final Random die = new Random();
 
 
-	public int roll(int max) {
+	public static int roll(int max) {
 		return die.nextInt(max);
 	}
 
-	public int roll() {
+	public static int roll() {
 		return die.nextInt(100);
 	}
 
