@@ -56,7 +56,7 @@ public class Mob extends Creature implements Duellist {
 	 * @param c The attacked creature
 	 *
 	 * @return a {@link Duel} between the creature and the attacked creature
-	 *         if the latter {@link Challengeable can be challenged},
+	 *         if the latter {@link Creature#isChalleangeable() can be challenged to duel},
 	 *         {@code null} otherwise
 	 */
 	public Duel fight(Creature c) {
