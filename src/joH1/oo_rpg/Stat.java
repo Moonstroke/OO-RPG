@@ -17,7 +17,7 @@ public enum Stat {
 	COURAGE(0x10),
 	AGGRESSIVITY(0X20);
 
-	private int value;
+	private final int value;
 
 	Stat(int value) {
 		this.value = value;
