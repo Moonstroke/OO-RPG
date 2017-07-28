@@ -6,7 +6,8 @@ import java.util.EnumSet;
 
 /**
  * Every stat.
- * Stats can be {@code OR}ed together (but this has no use yet)
+ *
+ * Stats can be {@code OR}ed together with proper methods (but this has no use yet)
  */
 public enum Stat {
 
@@ -23,6 +24,13 @@ public enum Stat {
 		this.value = value;
 	}
 
+	/**
+	 * Splits an {@code int} into different {@link Stat} by the values.
+	 *
+	 * @param stats The int value to split
+	 *
+	 * @return An {@link ArrayList} of the splitted stats
+	 */
 	public static ArrayList<Stat> splitList(int stats) {
 		ArrayList<Stat> l = new ArrayList<Stat>(6);
 		if((stats & HEALTH.value) != 0)
@@ -41,6 +49,13 @@ public enum Stat {
 		return l;
 	}
 
+	/**
+	 * Splits an {@code int} into different {@link Stat} by the values.
+	 *
+	 * @param stats The int value to split
+	 *
+	 * @return An {@link EnumSet} of the splitted stats
+	 */
 	public static EnumSet<Stat> splitSet(int stats) {
 		EnumSet<Stat> s = EnumSet.noneOf(Stat.class);
 		if((stats & HEALTH.value) != 0)
@@ -58,6 +73,13 @@ public enum Stat {
 		return s;
 	}
 
+	/**
+	 * Merges an {@link Iterable} into an {@code int}.
+	 *
+	 * @param stats The {@code Iterable<Stat>} to merge
+	 *
+	 * @return An {@code int} of the bitwise {@code or}'d values
+	 */
 	public static <C extends Iterable<Stat>> int merge(C stats) {
 		int n = 0;
 		for(Stat s : stats)
@@ -65,6 +87,13 @@ public enum Stat {
 		return n;
 	}
 
+	/**
+	 * Merges a {@code Stat[]} into an {@code int}.
+	 *
+	 * @param stats The array of {@link Stat} to merge
+	 *
+	 * @return An {@code int} of the bitwise {@code or}'d values
+	 */
 	public static int merge(Stat[] stats) {
 		int n = 0;
 		final int l = stats.length;
@@ -73,6 +102,11 @@ public enum Stat {
 		return n;
 	}
 
+	/**
+	 * For tests.
+	 *
+	 * @param args CLI arguments
+	 */
 	public static void main(String[] args) {
 		Stat[] resilienceStat = new Stat[] {DEFENCE, COURAGE};
 		int resilience = merge(resilienceStat);
