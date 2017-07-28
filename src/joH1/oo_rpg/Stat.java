@@ -1,7 +1,7 @@
 package joH1.oo_rpg;
 
-import java.util.List;
 import java.util.ArrayList;
+
 
 /**
  * Every stat.
@@ -22,34 +22,36 @@ public enum Stat {
 		this.value = value;
 	}
 
-	public static ArrayList<Stat> from(int stats) {
-		ArrayList<Stat> s = new ArrayList<Stat>(5);
+	public static ArrayList<Stat> splitList(int stats) {
+		ArrayList<Stat> l = new ArrayList<Stat>(6);
 		if((stats & HEALTH.value) != 0)
-			s.add(HEALTH);
+			l.add(HEALTH);
 		if((stats & FORCE.value) != 0)
-			s.add(FORCE);
+			l.add(FORCE);
 		if((stats & DEFENCE.value) != 0)
-			s.add(DEFENCE);
+			l.add(DEFENCE);
 		if((stats & SPEED.value) != 0)
-			s.add(SPEED);
+			l.add(SPEED);
 		if((stats & COURAGE.value) != 0)
-			s.add(COURAGE);
-		s.trimToSize();
-		return s;
+			l.add(COURAGE);
+		if((stats & AGGRESSIVITY.value) != 0)
+			l.add(AGGRESSIVITY);
+		l.trimToSize();
+		return l;
 	}
-	
-	public static int from(List<Stat> stats) {
+
+	public static <C extends Iterable<Stat>> int merge(C stats) {
 		int n = 0;
 		for(Stat s : stats)
-			n &= s.value;
+			n |= s.value;
 		return n;
 	}
 
-	public static int from (Stat[] stats) {
+	public static int merge(Stat[] stats) {
 		int n = 0;
 		final int l = stats.length;
 		for(int i = 0; i < l; ++i)
-			n &= stats[i].value;
+			n |= stats[i].value;
 		return n;
 	}
 
