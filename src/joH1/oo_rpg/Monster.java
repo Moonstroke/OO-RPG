@@ -2,7 +2,7 @@ package joH1.oo_rpg;
 
 import java.util.Random;
 
-public class Monster extends Creature {
+public class Monster extends Creature implements Aggressive {
 	private static final long serialVersionUID = 3L;
 
 	/**
@@ -66,5 +66,18 @@ public class Monster extends Creature {
 		// TODO
 	}
 
+	@Override
+	public void retaliate(Creature c) {
+		if(new Random().nextInt(100) < courage) // roll the dice
+			strike(c);
+		else
+			runFrom(c);
+	}
+
+	@Override
+	public void attackSpontaneously(Creature c) {
+		if(new Random().nextInt(100) < aggressivity) // roll the dice
+			strike(c);
+	}
 }
 
