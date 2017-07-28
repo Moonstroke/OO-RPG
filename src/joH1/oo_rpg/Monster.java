@@ -1,6 +1,5 @@
 package joH1.oo_rpg;
 
-import java.util.Random;
 
 public class Monster extends Creature implements Aggressive {
 	private static final long serialVersionUID = 3L;
