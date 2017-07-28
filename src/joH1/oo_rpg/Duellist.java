@@ -1,9 +1,24 @@
 package joH1.oo_rpg;
 
+
 public interface Duellist {
 
+	/**
+	 * Is the duellist currently involved in a duel?
+	 *
+	 * @return {@code true} if the duellisty is in duel
+	 */
+	public boolean inDuel();
+
+	/**
+	 * Plays its turn in the duel
+	 */
 	public void duelTurn(Duel d);
 
+	/*
+	 * Has the duellist died during the last turn?
+	 * @return {@code true} if the creature is dead
+	 */
 	public boolean hasDied();
 
 	/**
