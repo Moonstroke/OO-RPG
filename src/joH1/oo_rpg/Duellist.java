@@ -1,6 +1,7 @@
 package joH1.oo_rpg;
 
 
+@Deprecated
 public interface Duellist {
 
 	/**

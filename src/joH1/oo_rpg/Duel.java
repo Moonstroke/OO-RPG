@@ -1,6 +1,6 @@
 package joH1.oo_rpg;
 
-
+@Deprecated
 public class Duel {
 
 	private Duellist left, right;
