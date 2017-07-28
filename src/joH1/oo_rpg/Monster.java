@@ -12,14 +12,22 @@ public class Monster extends Creature {
 	 */
 	protected int courage;
 
-	public Monster(String name, int level, int initialHealth, int force, int defence, int speed, int courage) {
+	/**
+	 * The probability that the creature will attack another, in percent
+	 * {@code 0 < aggressivity <= 100}
+	 */
+	protected int aggressivity;
+
+	public Monster(String name, int level, int initialHealth, int force, int defence, int speed, int courage, int aggressivity) {
 		super(name, level, initialHealth, initialHealth, true, force, defence, speed);
 		this.courage = courage;
+		this.aggressivity = aggressivity;
 	}
 
-	protected Monster(String name, int level, int health, int maxHealth, boolean alive, int force, int defence, int speed, int courage) {
+	protected Monster(String name, int level, int health, int maxHealth, boolean alive, int force, int defence, int speed, int courage, int aggressivity) {
 		super(name, level, health, maxHealth, alive, force, defence, speed);
 		this.courage = courage;
+		this.aggressivity = aggressivity;
 	}
 
 	@Override
@@ -29,7 +37,7 @@ public class Monster extends Creature {
 
 	@Override
 	public Monster clone() {
-		return new Monster(new String(name), level, health, maxHealth, alive, force, defence, speed, courage);
+		return new Monster(new String(name), level, health, maxHealth, alive, force, defence, speed, courage, aggressivity);
 	}
 
 	@Override
@@ -40,6 +48,8 @@ public class Monster extends Creature {
 		switch(stat) {
 			case COURAGE:
 				return courage = (courage + amount) > 100 ? 100 : courage + amount;
+			case AGGRESSIVITY:
+				return aggressivity = (aggressivity + amount) > 100 ? 100 : aggressivity + amount;
 			default:
 				return 0;
 		}

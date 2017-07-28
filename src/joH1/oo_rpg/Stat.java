@@ -13,7 +13,8 @@ public enum Stat {
 	FORCE(0x2),
 	DEFENCE(0x4),
 	SPEED(0x8),
-	COURAGE(0x10);
+	COURAGE(0x10),
+	AGGRESSIVITY(0X20);
 
 	private int value;
 
