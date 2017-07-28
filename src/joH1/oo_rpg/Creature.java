@@ -113,17 +113,5 @@ public abstract class Creature extends Entity {
 	 */
 	public abstract void runFrom(Creature c);
 
-	/**
-	 * Can the creature be challenged in duel?
-	 *
-	 * NullPointerException safe.
-	 *
-	 * @return {@code true} iff the creature's final class 
-	 *         implements the {@link Duellist} interface
-	 */
-	public boolean isChallengeable() {
-		return this instanceof Duellist;
-	}
-
 }
 
