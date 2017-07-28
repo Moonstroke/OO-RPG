@@ -2,7 +2,7 @@ package joH1.oo_rpg;
 
 import java.util.Random;
 
-public class Monster extends Creature implements Duellist {
+public class Monster extends Creature {
 	private static final long serialVersionUID = 3L;
 
 	/**
@@ -56,24 +56,5 @@ public class Monster extends Creature implements Duellist {
 		// TODO
 	}
 
-	/**
-	 * Run in fear from a duel with another creature
-	 *
-	 * @param d The duel it runs from
-	 */
-	@Override
-	public void flee(Duel d) {
-		runFrom(d.getOpponent(this));
-	}
-
-	@Override
-	public void duelTurn(Duel d) {
-		Creature opponent = d.getOpponent(this);
-	}
-
-	@Override
-	public boolean hasDied() {
-		return !alive;
-	}
 }
 
