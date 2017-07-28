@@ -73,5 +73,19 @@ public enum Stat {
 		return n;
 	}
 
+	public static void main(String[] args) {
+		Stat[] resilienceStat = new Stat[] {DEFENCE, COURAGE};
+		int resilience = merge(resilienceStat);
+
+		System.out.format("resilience stats: %h <=> %s%n", resilience, splitList(resilience).toString());
+
+		ArrayList<Stat> violenceStats = new ArrayList<Stat>(2);
+		violenceStats.add(FORCE);
+		violenceStats.add(AGGRESSIVITY);
+		int violence = merge(violenceStats);
+		System.out.println("violence stats ArrayList = " + violenceStats);
+		System.out.format("violence stats: %h <=> %s%n", violence, splitSet(violence).toString());
+	}
+
 }
 
