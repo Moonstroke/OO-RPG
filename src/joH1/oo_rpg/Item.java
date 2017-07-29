@@ -5,46 +5,36 @@ public class Item extends Entity {
 	private static final long serialVersionUID = 3L;
 
 	/**
-	 * The stat the item affects (force, resistance, health, speed)
-	 */
-	protected Stat stat;
-
-	/**
 	 * Can the item be dropped by a creature?
 	 */
 	protected boolean lootable;
 
 
-	public Item(String name, int level, Stat modifiedStat, boolean isLootable) {
+	public Item(String name, int level, boolean isLootable) {
 		super(name, level);
-		stat = modifiedStat;
 		lootable = isLootable;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Item \"%s\" : %d, loot? %b", name, stat, lootable);
+		return String.format("Item \"%s\", loot? %b", name, stat, lootable);
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		if(!(super.equals(o) && o instanceof Item))
+		if(!(o instanceof Item && super.equals(o)))
 			return false;
 		Item i = (Item)o;
-		return stat == i.stat && lootable == i.lootable;
+		return lootable == i.lootable;
 	}
 
 	@Override
 	public Item clone() {
-		return new Item(new String(name), level, stat, lootable);
+		return new Item(new String(name), level, lootable);
 	}
 
 	public boolean isLootable() {
 		return lootable;
-	}
-
-	public Stat modifiedStat() {
-		return stat;
 	}
 
 
@@ -54,10 +44,10 @@ public class Item extends Entity {
 	 * @param args CLI arguments
 	 */
 	public static void main(String[] args) {
-		Item s = new Item("Sword", 4, Stat.FORCE, true);
+		Item s = new Item("Sword", 4, true);
 		System.out.println("s = " + s);
 
-		Item h = new Item("Shield", 5, Stat.DEFENCE, true);
+		Item h = new Item("Shield", 5, true);
 		System.out.println("h = " + h);
 
 		System.out.println("\n----------------\n");
