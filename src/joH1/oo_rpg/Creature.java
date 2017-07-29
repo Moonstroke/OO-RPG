@@ -30,7 +30,7 @@ public abstract class Creature extends Entity {
 
 	@Override
 	public boolean equals(Object o) {
-		if(!(super.equals(o) && o instanceof Creature))
+		if(!(o instanceof Creature && super.equals(o)))
 			return false;
 		Creature c = (Creature)o;
 		return health == c.health && maxHealth == c.maxHealth && c.force == force && c.defence == defence && c.speed == speed;

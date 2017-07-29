@@ -2,7 +2,7 @@ package joH1.oo_rpg;
 
 
 public class Monster extends Creature implements Aggressive {
-	private static final long serialVersionUID = 3L;
+	private static final long serialVersionUID = 4L;
 
 	/**
 	 * The courage of the creature (ie. its ability, in combat, to not be frightened during battle)
@@ -32,6 +32,14 @@ public class Monster extends Creature implements Aggressive {
 	@Override
 	public String toString() {
 		return String.format("%s | %d%%", super.toString(), courage);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if(!(o instanceof Monster && super.equals(o)))
+			return false;
+		Monster m = (Monster)o;
+		return courage == m.courage && aggressivity == m.aggressivity;
 	}
 
 	@Override
