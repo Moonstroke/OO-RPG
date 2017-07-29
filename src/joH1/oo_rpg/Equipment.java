@@ -11,5 +11,5 @@ public class Equipment extends Item {
 	public int equip(Creature c) throws IllegalArgumentException {
 		return c.buffStat(stat, level);
 	}
-}
 
+}

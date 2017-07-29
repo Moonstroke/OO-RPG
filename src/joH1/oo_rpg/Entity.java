@@ -48,4 +48,3 @@ public abstract class Entity implements Cloneable, Serializable {
 		return ++level;
 	}
 }
-

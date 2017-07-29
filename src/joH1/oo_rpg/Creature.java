@@ -114,4 +114,3 @@ public abstract class Creature extends Entity {
 	public abstract void runFrom(Creature c);
 
 }
-

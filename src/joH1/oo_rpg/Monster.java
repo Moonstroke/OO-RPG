@@ -79,4 +79,3 @@ public class Monster extends Creature implements Aggressive {
 	}
 
 }
-

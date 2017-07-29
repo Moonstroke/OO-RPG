@@ -45,4 +45,3 @@ public interface Duellist {
 	public abstract void flee(Duel d);
 
 }
-
