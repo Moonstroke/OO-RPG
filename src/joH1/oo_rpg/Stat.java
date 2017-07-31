@@ -20,9 +20,11 @@ public enum Stat {
 
 	private final int value;
 
+
 	Stat(int value) {
 		this.value = value;
 	}
+
 
 	/**
 	 * Splits an {@code int} into different {@link Stat} by the values.

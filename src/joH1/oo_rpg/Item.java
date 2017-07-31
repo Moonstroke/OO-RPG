@@ -14,10 +14,15 @@ public class Item extends Entity {
 		super(name, level);
 		lootable = isLootable;
 	}
+	
+	protected Item(Item i) {
+		super(i);
+		lootable = i.lootable;
+	}
 
 	@Override
 	public String toString() {
-		return String.format("Item \"%s\", loot? %b", name, stat, lootable);
+		return String.format("%s, loot? %b", super.toString(), lootable);
 	}
 
 	@Override
@@ -26,11 +31,6 @@ public class Item extends Entity {
 			return false;
 		Item i = (Item)o;
 		return lootable == i.lootable;
-	}
-
-	@Override
-	public Item clone() {
-		return new Item(new String(name), level, lootable);
 	}
 
 	public boolean isLootable() {
@@ -52,7 +52,7 @@ public class Item extends Entity {
 
 		System.out.println("\n----------------\n");
 
-		Item s2 = s.clone();
+		Item s2 = new Item(s);
 		System.out.println("s2 = " + s2);
 		boolean equals = s2.equals(s);
 		System.out.println("s2 == s ? " + equals);

@@ -15,10 +15,16 @@ public abstract class Entity implements Cloneable, Serializable {
 	protected int level;
 
 
-	protected Entity(String name, int level) {
+	protected Entity(Entity e) {
+		name = e.name;
+		level = e.level;
+	}
+
+	public Entity(String name, int level) {
 		this.name = name;
 		this.level = level;
 	}
+
 
 	@Override
 	public String toString() {

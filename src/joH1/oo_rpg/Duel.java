@@ -11,6 +11,7 @@ public class Duel {
 		this.right = right;
 	}
 
+
 	@Override
 	public String toString() {
 		return String.format("Duel <%s> vs <%s>", left.toString(), right.toString());

@@ -17,11 +17,20 @@ public abstract class Creature extends Entity {
 	protected int speed;
 
 
-	protected Creature(String name, int level, int health, int maxHealth, boolean alive, int force, int defence, int speed) { // Use this
+	protected Creature(Creature c) {
+		super(c);
+		health = c.health;
+		maxHealth = c.maxHealth;
+		alive = c.alive;
+		force = c.force;
+		defence = c.defence;
+		speed = c.speed;
+	}
+
+	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) { // Use this
 		super(name, level);
-		this.health = health;
-		this.maxHealth = maxHealth;
-		this.alive = alive;
+		health = maxHealth = initialHealth;
+		alive = true;
 		this.force = force;
 		this.defence = defence;
 		this.speed = speed;

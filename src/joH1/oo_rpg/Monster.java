@@ -17,17 +17,19 @@ public class Monster extends Creature implements Aggressive {
 	 */
 	protected int aggressivity;
 
+
+	protected Monster(Monster m) {
+		super(m);
+		courage = m.courage;
+		aggressivity = m.aggressivity;
+	}
+
 	public Monster(String name, int level, int initialHealth, int force, int defence, int speed, int courage, int aggressivity) {
-		super(name, level, initialHealth, initialHealth, true, force, defence, speed);
+		super(name, level, initialHealth, force, defence, speed);
 		this.courage = courage;
 		this.aggressivity = aggressivity;
 	}
 
-	protected Monster(String name, int level, int health, int maxHealth, boolean alive, int force, int defence, int speed, int courage, int aggressivity) {
-		super(name, level, health, maxHealth, alive, force, defence, speed);
-		this.courage = courage;
-		this.aggressivity = aggressivity;
-	}
 
 	@Override
 	public String toString() {
@@ -40,11 +42,6 @@ public class Monster extends Creature implements Aggressive {
 			return false;
 		Monster m = (Monster)o;
 		return courage == m.courage && aggressivity == m.aggressivity;
-	}
-
-	@Override
-	public Monster clone() {
-		return new Monster(new String(name), level, health, maxHealth, alive, force, defence, speed, courage, aggressivity);
 	}
 
 	@Override

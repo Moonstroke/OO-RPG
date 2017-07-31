@@ -10,10 +10,16 @@ public class Equipment extends Item {
 	protected Stat stat;
 
 
+	protected Equipment(Equipment e) {
+		super(e);
+		stat = e.stat;
+	}
+
 	public Equipment(String name, int level, boolean isLootable, Stat modifiedStat) {
 		super(name, level, isLootable);
 		stat = modifiedStat;
 	}
+
 
 	@Override
 	public String toString() {
@@ -26,11 +32,6 @@ public class Equipment extends Item {
 			return false;
 		Equipment e = (Equipment)o;
 		return stat == e.stat;
-	}
-
-	@Override
-	public Equipment clone() {
-		return new Equipment(new String(name), level, lootable, stat);
 	}
 
 	public int equip(Creature c) throws IllegalArgumentException {
