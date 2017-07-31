@@ -2,7 +2,7 @@ package joH1.oo_rpg;
 
 
 public class Creature extends Entity {
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = -3646561874867278364L;
 
 	protected boolean alive;
 

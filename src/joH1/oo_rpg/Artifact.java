@@ -1,7 +1,7 @@
 package joH1.oo_rpg;
 
 public class Artifact extends Item implements Consumable {
-	private static final long serialVersionUID = 7L;
+	private static final long serialVersionUID = 9159061021810651583L;
 
 	/**
 	 * The {@linkplain Stat statistic} the artifact affects

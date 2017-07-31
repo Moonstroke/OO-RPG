@@ -2,7 +2,7 @@ package joH1.oo_rpg;
 
 
 public class Monster extends Creature implements Aggressive {
-	private static final long serialVersionUID = 4L;
+	private static final long serialVersionUID = 115921631885276461L;
 
 	/**
 	 * The courage of the creature (ie. its ability, in combat, to not be frightened during battle)
