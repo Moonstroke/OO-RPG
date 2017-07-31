@@ -61,7 +61,7 @@ public class Item extends Entity {
 		return restore(amount);
 	}
 
-	public void break_() {
+	public void breakItem() {
 	}
 
 	/**
