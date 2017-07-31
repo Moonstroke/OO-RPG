@@ -9,20 +9,36 @@ public class Item extends Entity {
 	 */
 	protected boolean lootable;
 
+	/**
+	 * The value of the item (in trade)
+	 */
+	protected int value;
+
+
 	protected Item(Item i) {
 		super(i);
 		lootable = i.lootable;
+		value = i.value;
 	}
 
-	public Item(String name, int level, int initialDurability, boolean lootable) { // Use this
+	/**
+	 * Public constructor
+	 *
+	 * @param name              the name of the Item
+	 * @param level             its level
+	 * @param initialDurability the durability (and maximum durability) it holds to begin with
+	 * @param value             its value, set it to -1 and the item can't be dropped upon death
+	 */
+	public Item(String name, int level, int initialDurability, int value) { // Use this
 		super(name, level, initialDurability);
 		this.lootable = lootable;
+		lootable = (this.value = value) >= 0;
 	}
 
 
 	@Override
 	public String toString() {
-		return String.format("%s, loot? %b", super.toString(), lootable);
+		return String.format("%s, $%d (%s loot)", super.toString(), value, lootable ? "is" : "not");
 	}
 
 	@Override
@@ -54,10 +70,10 @@ public class Item extends Entity {
 	 * @param args CLI arguments
 	 */
 	public static void main(String[] args) {
-		Item s = new Item("Sword", 4, 100, true);
+		Item s = new Item("Sword", 4, 100, 42);
 		System.out.println("s = " + s);
 
-		Item h = new Item("Shield", 5, 120, true);
+		Item h = new Item("Shield", 5, 120, -1);
 		System.out.println("h = " + h);
 
 		System.out.println("\n----------------\n");

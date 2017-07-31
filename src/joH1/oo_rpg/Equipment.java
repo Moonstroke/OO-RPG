@@ -15,8 +15,8 @@ public class Equipment extends Item {
 		stat = e.stat;
 	}
 
-	public Equipment(String name, int level, boolean lootable, int durability, Stat stat) {
-		super(name, level, durability, lootable);
+	public Equipment(String name, int level, int durability, int value, Stat stat) {
+		super(name, level, durability, value);
 		this.stat = stat;
 	}
 
