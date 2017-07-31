@@ -4,10 +4,6 @@ package joH1.oo_rpg;
 public abstract class Creature extends Entity {
 	private static final long serialVersionUID = 2L;
 
-	protected int health;
-
-	protected final int maxHealth;
-
 	protected boolean alive;
 
 	protected int force;
@@ -19,8 +15,6 @@ public abstract class Creature extends Entity {
 
 	protected Creature(Creature c) {
 		super(c);
-		health = c.health;
-		maxHealth = c.maxHealth;
 		alive = c.alive;
 		force = c.force;
 		defence = c.defence;
@@ -28,8 +22,7 @@ public abstract class Creature extends Entity {
 	}
 
 	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) { // Use this
-		super(name, level);
-		health = maxHealth = initialHealth;
+		super(name, level, initialHealth);
 		alive = true;
 		this.force = force;
 		this.defence = defence;
@@ -42,12 +35,16 @@ public abstract class Creature extends Entity {
 		if(!(o instanceof Creature && super.equals(o)))
 			return false;
 		Creature c = (Creature)o;
-		return health == c.health && maxHealth == c.maxHealth && c.force == force && c.defence == defence && c.speed == speed;
+		return c.force == force && c.defence == defence && c.speed == speed;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%s [%d/%d], %d / %d -- %d", super.toString(), health, maxHealth, force, defence, speed);
+		return String.format("%s, %d / %d -- %d", super.toString(), force, defence, speed);
+	}
+
+	public int health() {
+		return integrity;
 	}
 
 	public boolean isAlive() {
@@ -67,11 +64,7 @@ public abstract class Creature extends Entity {
 	 * @return {@code alive}
 	 */
 	public boolean hurt(int amount) {
-		if((health -= amount) <= 0) {
-			die();
-			return false;
-		}
-		return true;
+		return alive = damage(amount);
 	}
 
 	/**
@@ -81,23 +74,23 @@ public abstract class Creature extends Entity {
 	 *
 	 * @return The new health of the creature
 	 */
-	public int restore(int amount) {
-		int sum = health + amount;
-		return sum > maxHealth ? (health = maxHealth) : (health = sum);
+	public int heal(int amount) {
+		return restore(amount);
 	}
 
 	/**
 	 * Increases the value of one of the creature's statistics
 	 *
 	 * @param stat   The statistic to increase
-	 * @param amount The value by which to increqse the stat
+	 * @param amount The value by which to increase the stat
 	 *
 	 * @return The new value of the statistic or {@code 0} if the stat could not be found
 	 */
 	public int buffStat(Stat stat, int amount) {
 		switch(stat) {
 			case HEALTH:
-				return health += amount;
+				if(maxIntegrity >= 0) maxIntegrity += amount;
+				return maxIntegrity;
 			case FORCE:
 				return force += amount;
 			case DEFENCE:

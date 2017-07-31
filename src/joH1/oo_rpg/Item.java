@@ -9,37 +9,20 @@ public class Item extends Entity {
 	 */
 	protected boolean lootable;
 
-	/**
-	 * The integrity of the item (amount of mechanical wear of the item).
-	 * When the durability reaches 0, the item breaks (disappears)
-	 */
-	protected int durability;
-
-	/**
-	 * The max value of the item's {@linkplain #durability}
-	 *
-	 * If this value is -1, the item is unbreakable
-	 */
-	protected final int maxDurability;
-
-
 	protected Item(Item i) {
 		super(i);
-		durability = i.durability;
-		maxDurability = i.maxDurability;
 		lootable = i.lootable;
 	}
 
 	public Item(String name, int level, int initialDurability, boolean lootable) { // Use this
-		super(name, level);
-		this.durability = this.maxDurability = durability;
+		super(name, level, initialDurability);
 		this.lootable = lootable;
 	}
 
 
 	@Override
 	public String toString() {
-		return String.format("%s [%d/%d], loot? %b", super.toString(), durability, maxDurability, lootable);
+		return String.format("%s, loot? %b", super.toString(), lootable);
 	}
 
 	@Override
@@ -47,7 +30,7 @@ public class Item extends Entity {
 		if(!(o instanceof Item && super.equals(o)))
 			return false;
 		Item i = (Item)o;
-		return durability == i.durability && lootable == i.lootable;
+		return lootable == i.lootable;
 	}
 
 	public boolean isLootable() {
@@ -55,14 +38,15 @@ public class Item extends Entity {
 	}
 
 	public int durability() {
-		return durability;
+		return integrity;
 	}
 
-	public int repair(int amount) {
-		int sum = durability + amount;
-		return sum > maxDurability ? (durability = maxDurability) : (durability = sum);
+	public int mend(int amount) {
+		return restore(amount);
 	}
 
+	public void break_() {
+	}
 
 	/**
 	 * Added for tests.
