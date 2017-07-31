@@ -82,7 +82,8 @@ public abstract class Creature extends Entity {
 	 * @return The new health of the creature
 	 */
 	public int restore(int amount) {
-		return health + amount > maxHealth ? (health = maxHealth) : (health += amount);
+		int sum = health + amount;
+		return sum > maxHealth ? (health = maxHealth) : (health = sum);
 	}
 
 	/**
