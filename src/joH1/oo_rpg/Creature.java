@@ -1,7 +1,7 @@
 package joH1.oo_rpg;
 
 
-public abstract class Creature extends Entity {
+public class Creature extends Entity {
 	private static final long serialVersionUID = 2L;
 
 	protected boolean alive;
@@ -107,13 +107,29 @@ public abstract class Creature extends Entity {
 	 *
 	 * @param c the striked creature
 	 */
-	public abstract void strike(Creature c);
+	public void strike(Creature c) {}
 
 	/**
 	 * Run in fear from another creature
 	 *
 	 * @param c The creature to run from
 	 */
-	public abstract void runFrom(Creature c);
+	public void runFrom(Creature c) {}
+	
+	public static void main(String[] args) {
+		Creature randomMob = new Creature("Random mob", 1, 10, 5, 5, 5);
+		System.out.println("randomMob = " + randomMob);
 
+		System.out.println("\n----------\n");
+
+		Creature c1 = new Creature("Big monster", 15, 450, 60, 80, 50);
+		Creature c2 = new Creature(c1);
+		System.out.println("c1 = " + c1 + "\nc2 = " + c2);
+		System.out.print("\nc1.equals(c2) ? ");
+		if(c1.equals(c2)) {
+			System.out.println("OK");
+		} else {
+			System.out.println("Odd, not equals...");
+		}
+	}
 }
