@@ -39,7 +39,7 @@ public class Item extends Entity {
 
 	@Override
 	public String toString() {
-		return String.format("%s [%s/%s], loot? %b", super.toString(), durability, maxDurability, lootable);
+		return String.format("%s [%d/%d], loot? %b", super.toString(), durability, maxDurability, lootable);
 	}
 
 	@Override
