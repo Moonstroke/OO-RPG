@@ -9,20 +9,37 @@ public class Item extends Entity {
 	 */
 	protected boolean lootable;
 
+	/**
+	 * The integrity of the item (amount of mechanical wear of the item).
+	 * When the durability reaches 0, the item breaks (disappears)
+	 */
+	protected int durability;
 
-	public Item(String name, int level, boolean isLootable) {
-		super(name, level);
-		lootable = isLootable;
-	}
-	
+	/**
+	 * The max value of the item's {@linkplain #durability}
+	 *
+	 * If this value is -1, the item is unbreakable
+	 */
+	protected final int maxDurability;
+
+
 	protected Item(Item i) {
 		super(i);
+		durability = i.durability;
+		maxDurability = i.maxDurability;
 		lootable = i.lootable;
 	}
 
+	public Item(String name, int level, int initialDurability, boolean lootable) { // Use this
+		super(name, level);
+		this.durability = this.maxDurability = durability;
+		this.lootable = lootable;
+	}
+
+
 	@Override
 	public String toString() {
-		return String.format("%s, loot? %b", super.toString(), lootable);
+		return String.format("%s [%s/%s], loot? %b", super.toString(), durability, maxDurability, lootable);
 	}
 
 	@Override
@@ -30,11 +47,20 @@ public class Item extends Entity {
 		if(!(o instanceof Item && super.equals(o)))
 			return false;
 		Item i = (Item)o;
-		return lootable == i.lootable;
+		return durability == i.durability && lootable == i.lootable;
 	}
 
 	public boolean isLootable() {
 		return lootable;
+	}
+
+	public int durability() {
+		return durability;
+	}
+
+	public int repair(int amount) {
+		int sum = durability + amount;
+		return sum > maxDurability ? (durability = maxDurability) : (durability = sum);
 	}
 
 
@@ -44,10 +70,10 @@ public class Item extends Entity {
 	 * @param args CLI arguments
 	 */
 	public static void main(String[] args) {
-		Item s = new Item("Sword", 4, true);
+		Item s = new Item("Sword", 4, 100, true);
 		System.out.println("s = " + s);
 
-		Item h = new Item("Shield", 5, true);
+		Item h = new Item("Shield", 5, 120, true);
 		System.out.println("h = " + h);
 
 		System.out.println("\n----------------\n");
