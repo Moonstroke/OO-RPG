@@ -65,6 +65,8 @@ public class Item extends Entity {
 	}
 
 	public void breakItem() {
+		name = "Broken " + name;
+		value = level = 0;
 	}
 
 	/**
