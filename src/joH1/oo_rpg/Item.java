@@ -64,7 +64,8 @@ public class Item extends Entity {
 		return restore(amount);
 	}
 
-	public void breakItem() {
+	@Override
+	public void end() {
 		name = "Broken " + name;
 		value = level = 0;
 	}
