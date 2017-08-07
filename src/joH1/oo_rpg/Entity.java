@@ -100,8 +100,15 @@ public abstract class Entity implements Cloneable, Serializable {
 	 *         ie. the boolean value for {@code Has the entity died/broken?}
 	 */
 	protected boolean damage(int amount) {
-		return maxIntegrity < 0 || (integrity -= amount) > 0;
+		boolean isStillIntegral = maxIntegrity < 0 || (integrity -= amount) > 0;
+		if(!isStillIntegral)
+			end();
+		return isStillIntegral;
 	}
 
+	/**
+	 * Called when the entity has no more integrity points.
+	 */
+	protected abstract void end();
 }
 
