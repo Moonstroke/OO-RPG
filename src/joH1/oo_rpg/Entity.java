@@ -30,6 +30,10 @@ public abstract class Entity implements Cloneable, Serializable {
 	 */
 	protected int maxIntegrity;
 
+
+	/**
+	 * Copy ctor
+	 */
 	protected Entity(Entity e) {
 		name = e.name;
 		level = e.level;
@@ -37,6 +41,11 @@ public abstract class Entity implements Cloneable, Serializable {
 		maxIntegrity = e.maxIntegrity;
 	}
 
+
+	/**
+	 * Public constructor: use this
+	 *
+	 */
 	public Entity(String name, int level, int initialIntegrity) {
 		this.name = name;
 		this.level = level;
@@ -46,7 +55,8 @@ public abstract class Entity implements Cloneable, Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("%s \"%s\" level %d [%d/%d]", this.getClass().getSimpleName(), name, level, integrity, maxIntegrity);
+		return String.format("%s \"%s\" level %d [%d/%d]", this.getClass().getSimpleName(), name,
+		                     level, integrity, maxIntegrity);
 	}
 
 	@Override
@@ -59,7 +69,8 @@ public abstract class Entity implements Cloneable, Serializable {
 		if(o == null || ! (o instanceof Entity))
 			return false;
 		Entity e = (Entity)o;
-		return name.equals(e.name) && level == e.level && integrity == e.integrity && maxIntegrity == e.maxIntegrity;
+		return name.equals(e.name) && level == e.level && integrity == e.integrity
+		       && maxIntegrity == e.maxIntegrity;
 	}
 
 	/**
@@ -93,3 +104,4 @@ public abstract class Entity implements Cloneable, Serializable {
 	}
 
 }
+

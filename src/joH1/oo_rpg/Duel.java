@@ -6,6 +6,12 @@ public class Duel {
 	private Duellist left, right;
 
 
+	/**
+	 * Public constructor: use this
+	 *
+	 * @param left  the {@link Duellist} that engaged battle: attacker
+	 * @param right the {@link Duellist} that has been challenged to fight
+	 */
 	public Duel(Duellist left, Duellist right) {
 		this.left = left;
 		this.right = right;

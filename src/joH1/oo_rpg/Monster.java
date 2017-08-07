@@ -82,5 +82,5 @@ public class Monster extends Creature implements Aggressive {
 		if(Die.roll() < aggressivity)
 			strike(c);
 	}
-
 }
+

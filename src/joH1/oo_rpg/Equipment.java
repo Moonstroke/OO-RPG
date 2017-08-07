@@ -10,11 +10,17 @@ public class Equipment extends Item {
 	protected Stat stat;
 
 
+	/**
+	 * Copy ctor
+	 */
 	protected Equipment(Equipment e) {
 		super(e);
 		stat = e.stat;
 	}
 
+	/**
+	 * Public constructor: use this
+	 */
 	public Equipment(String name, int level, int durability, int value, Stat stat) {
 		super(name, level, durability, value);
 		this.stat = stat;
@@ -43,3 +49,4 @@ public class Equipment extends Item {
 	}
 
 }
+

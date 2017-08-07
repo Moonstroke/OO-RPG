@@ -13,6 +13,9 @@ public class Creature extends Entity {
 	protected int speed;
 
 
+	/**
+	 * Copy ctor
+	 */
 	protected Creature(Creature c) {
 		super(c);
 		alive = c.alive;
@@ -21,7 +24,10 @@ public class Creature extends Entity {
 		speed = c.speed;
 	}
 
-	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) { // Use this
+	/**
+	 * Public constructor: use this
+	 */
+	public Creature(String name, int level, int initialHealth, int force, int defence, int speed) {
 		super(name, level, initialHealth);
 		alive = true;
 		this.force = force;
@@ -84,7 +90,8 @@ public class Creature extends Entity {
 	 * @param stat   The statistic to increase
 	 * @param amount The value by which to increase the stat
 	 *
-	 * @return The new value of the statistic or {@code 0} if the stat could not be found
+	 * @return The new value of the {@code Stat statistic} or {@code 0} if the stat could not be
+	 *         found
 	 */
 	public int buffStat(Stat stat, int amount) {
 		switch(stat) {
@@ -133,3 +140,4 @@ public class Creature extends Entity {
 		}
 	}
 }
+

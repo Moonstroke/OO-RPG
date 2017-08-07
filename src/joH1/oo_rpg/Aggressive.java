@@ -5,5 +5,5 @@ public interface Aggressive {
 	public void retaliate(Creature c);
 
 	public void attackSpontaneously(Creature c);
-
 }
+

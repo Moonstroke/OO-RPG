@@ -11,3 +11,4 @@ public interface Consumable {
 	public boolean consume();
 
 }
+

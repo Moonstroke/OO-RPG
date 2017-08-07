@@ -15,6 +15,9 @@ public class Item extends Entity {
 	protected int value;
 
 
+	/**
+	 * Copy ctor
+	 */
 	protected Item(Item i) {
 		super(i);
 		lootable = i.lootable;
@@ -22,7 +25,7 @@ public class Item extends Entity {
 	}
 
 	/**
-	 * Public constructor
+	 * Public constructor: use this
 	 *
 	 * @param name              the name of the Item
 	 * @param level             its level
@@ -89,5 +92,5 @@ public class Item extends Entity {
 			System.out.println("OK");
 		}
 	}
-
 }
+
