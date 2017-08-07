@@ -1,6 +1,6 @@
 package joH1.oo_rpg;
 
-public class Artifact extends Item implements Consumable {
+public class Artifact extends Item implements Consumable, Applicable {
 	private static final long serialVersionUID = 9159061021810651583L;
 
 	/**
@@ -20,9 +20,9 @@ public class Artifact extends Item implements Consumable {
 
 
 	@Override
-	public void apply(Creature c) {
+	public int apply(Creature c) {
 		consume();
-		c.buffStat(stat, level);
+		return c.buffStat(stat, level);
 	}
 
 	@Override
@@ -31,3 +31,4 @@ public class Artifact extends Item implements Consumable {
 	}
 
 }
+
