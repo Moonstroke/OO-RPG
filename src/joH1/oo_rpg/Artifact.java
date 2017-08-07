@@ -28,8 +28,9 @@ public class Artifact extends Item implements Consumable, Applicable {
 
 	@Override
 	public int apply(Creature c) {
+		int newValue = c.buffStat(stat, level);
 		consume();
-		return c.buffStat(stat, level);
+		return newValue;
 	}
 
 	@Override
