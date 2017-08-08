@@ -1,6 +1,6 @@
 package joH1.oo_rpg;
 
-public class Spell extends Item implements Consumable, Applicable {
+public class Charm extends Item implements Consumable, Applicable {
 	private static final long serialVersionUID = -426939949763150537L;
 
 	/**
