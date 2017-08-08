@@ -57,7 +57,8 @@ public class Creature extends Entity {
 		return alive;
 	}
 
-	public void die() {
+	@Override
+	public void end() {
 		alive = false;
 	}
 

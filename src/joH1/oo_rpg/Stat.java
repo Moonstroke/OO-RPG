@@ -36,7 +36,7 @@ public enum Stat {
 	public static ArrayList<Stat> splitList(int stats) {
 		ArrayList<Stat> l = new ArrayList<Stat>(6);
 		for(Stat stat : Stat.values())
-			if(stats & stat.value != 0)
+			if((stats & stat.value) != 0)
 				l.add(stat);
 		l.trimToSize();
 		return l;
@@ -52,7 +52,7 @@ public enum Stat {
 	public static EnumSet<Stat> splitSet(int stats) {
 		EnumSet<Stat> s = EnumSet.noneOf(Stat.class);
 		for(Stat stat : Stat.values())
-			if(stats & stat.value != 0)
+			if((stats & stat.value) != 0)
 				s.add(stat);
 		return s;
 	}
