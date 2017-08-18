@@ -1,9 +1,0 @@
-#!/bin/bash
-
-d=${0%/*}
-
-out_d="$d/out"
-src_d="$d/src"
-
-rm -vr $out_d/* 2> /dev/null || echo "output directory '$out_d' is empty" >&2
-
