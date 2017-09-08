@@ -12,11 +12,11 @@ public class Charm extends Item implements Consumable, Applicable {
 	/**
 	 * Copy ctor
 	 */
-	protected Spell(Spell s) {
+	protected Charm(Charm s) {
 		super(s);
 		stat = s.stat;
 	}
-	public Spell(String name, int level, int value, Stat stat) {
+	public Charm(String name, int level, int value, Stat stat) {
 		super(name, level, 1, value);
 		this.stat = stat;
 	}
